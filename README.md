@@ -1,1 +1,59 @@
-![Typecast Animation](https://Pub2412.github.io/Hello-World-/assets/Hello,World.gif)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TYPECAST Animation</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+    body {
+      margin: 0;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .typecast-container {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 32px;
+      color: #00FFFF;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 4px solid #0004ff;
+      animation: blink-caret 0.7s step-end infinite;
+    }
+
+    @keyframes blink-caret {
+      50% { border-color: transparent; }
+    }
+  </style>
+</head>
+<body>
+  <div class="typecast-container" id="typecast"></div>
+
+  <script>
+    const text = "HELLO, WORLD!";
+    const speed = 200; // milliseconds per character
+    let i = 0;
+
+    function typeWriter() {
+      if (i < text.length) {
+        document.getElementById("typecast").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+      } else {
+        setTimeout(() => {
+          i = 0;
+          document.getElementById("typecast").innerHTML = "";
+          typeWriter();
+        }, 1500);
+      }
+    }
+
+    typeWriter();
+  </script>
+</body>
+</html>
+
